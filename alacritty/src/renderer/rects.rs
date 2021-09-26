@@ -80,6 +80,7 @@ impl RenderLine {
 
                 (bottom_pos, metrics.underline_thickness)
             },
+            Flags::UNDERCURL |
             Flags::UNDERLINE => (metrics.underline_position, metrics.underline_thickness),
             Flags::STRIKEOUT => (metrics.strikeout_position, metrics.strikeout_thickness),
             _ => unimplemented!("Invalid flag for cell line drawing specified"),
@@ -160,6 +161,7 @@ impl RenderLines {
     pub fn update(&mut self, cell: &RenderableCell) {
         self.update_flag(cell, Flags::UNDERLINE);
         self.update_flag(cell, Flags::DOUBLE_UNDERLINE);
+        self.update_flag(cell, Flags::UNDERCURL);
         self.update_flag(cell, Flags::STRIKEOUT);
     }
 
